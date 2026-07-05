@@ -115,14 +115,14 @@
   .ctrl-btn:active { transform: translateY(1px); background: var(--accent); color: var(--bg); }
 
   .overlay {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: rgba(10,10,10,0.55);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    z-index: 10;
+    z-index: 100;
   }
 
   .overlay.hidden { display: none; }
@@ -134,6 +134,8 @@
     border-radius: 16px;
     max-width: 380px;
     width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     text-align: center;
     box-shadow: 0 20px 50px rgba(0,0,0,0.35);
   }
@@ -201,16 +203,16 @@
     </div>
     <div class="game-frame">
       <canvas id="game" width="800" height="300" tabindex="0"></canvas>
+    </div>
 
-      <div id="overlay-backdrop" class="overlay hidden">
-        <div class="modal">
-          <span class="modal-eyebrow">GAME OVER</span>
-          <div class="modal-score" id="final-score">000000</div>
-          <p>Gracias a estos derechos puedes hacer grandes cosas.</p>
-          <div class="modal-actions">
-            <button id="retry-btn">Reintentar</button>
-            <a id="more-link" class="btn" href="https://misderechoss.my.canva.site/">Saber más</a>
-          </div>
+    <div id="overlay-backdrop" class="overlay hidden">
+      <div class="modal">
+        <span class="modal-eyebrow">GAME OVER</span>
+        <div class="modal-score" id="final-score">000000</div>
+        <p>Gracias a estos derechos puedes hacer grandes cosas.</p>
+        <div class="modal-actions">
+          <button id="retry-btn">Reintentar</button>
+          <a id="more-link" class="btn" href="https://misderechoss.my.canva.site/">Saber más</a>
         </div>
       </div>
     </div>
