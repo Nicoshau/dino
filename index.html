@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Derechos a la libertad</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,6 +31,11 @@
     --sky-orb: #D9D9C9;
   }
 
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
   * { box-sizing: border-box; }
 
   body {
@@ -47,6 +52,8 @@
     transition: background 0.25s ease, color 0.25s ease;
     padding: 24px 16px;
     user-select: none;
+    touch-action: none;
+    overscroll-behavior: none;
   }
 
   .wrap { width: 100%; max-width: 800px; }
@@ -538,6 +545,10 @@
   function handleKeyUp(e) {
     if (e.code === 'ArrowDown') setDuck(false);
   }
+
+  document.addEventListener('touchmove', function (e) {
+    if (!e.target.closest('.modal')) e.preventDefault();
+  }, { passive: false });
 
   document.addEventListener('keydown', handleKeyDown);
   document.addEventListener('keyup', handleKeyUp);
